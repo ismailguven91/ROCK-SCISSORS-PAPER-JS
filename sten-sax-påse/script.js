@@ -6,6 +6,9 @@ const h3 = document.querySelector("h3");
 const div = document.querySelector("div");
 let playerScore = 0;
 let computerScore = 0;
+const emoji = document.querySelectorAll("span");
+console.log(emoji);
+const h4 = document.querySelectorAll("h4");
 
 btn.addEventListener("click", getPlayerName);
 div.addEventListener("click", function (e) {
@@ -22,27 +25,45 @@ div.addEventListener("click", function (e) {
 function compareChoices(computerChoise, playersChoise) {
   if (computerChoise === playersChoise) {
     p[3].innerText = "Try again";
+    h4[0].innerText=emoji[3].innerText;
+    h4[1].innerText=emoji[3].innerText;
+
   }
   else if (computerChoise === "Rock" && playersChoise === "Paper") {
     playerScore++;
+    h4[0].innerText=emoji[1].innerText;
+    h4[1].innerText=emoji[0].innerText;
   }
   else if (computerChoise === "Rock" && playersChoise === "Scissor") {
     computerScore++;
+    h4[0].innerText=emoji[2].innerText;
+    h4[1].innerText=emoji[0].innerText;
+
   }
   else if (computerChoise === "Scissor" && playersChoise === "Paper") {
     computerScore++;
+    h4[0].innerText=emoji[1].innerText;
+    h4[1].innerText=emoji[2].innerText;
+
   }
   else if (computerChoise === "Scissor" && playersChoise === "Rock") {
     playerScore++;
+    h4[0].innerText=emoji[0].innerText;
+    h4[1].innerText=emoji[2].innerText;
   }
   else if (computerChoise === "Paper" && playersChoise === "Scissor") {
     playerScore++;
+    h4[0].innerText=emoji[2].innerText;
+    h4[1].innerText=emoji[1].innerText;
   }
   else if (computerChoise === "Paper" && playersChoise === "Rock") {
     computerScore++;
+    h4[0].innerText=emoji[0].innerText;
+    h4[1].innerText=emoji[1].innerText;
+
   }
-  p[4].innerText = playerScore;
-  p[5].innerText = computerScore;
+  p[4].innerText = "Player score: "+playerScore;
+  p[5].innerText = "Computer score: "+computerScore;
 
   if (computerScore === 3 || playerScore === 3) {
     setTimeout( function() {
@@ -51,6 +72,8 @@ function compareChoices(computerChoise, playersChoise) {
         computerScore = 0;
         p[4].innerText = playerScore;
         p[5].innerText = computerScore;
+        h4[0].innerText=emoji[3].innerText;
+        h4[1].innerText=emoji[3].innerText;
     }, 0);
     
 }
